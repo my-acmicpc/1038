@@ -1,6 +1,5 @@
 use std::process::exit;
 
-const MAX_N: u32 = 1000000;
 const LAST_REDUCING_NUMBER: i32 = 987654321;
 
 fn is_reducing_number(number: i32) -> bool {
@@ -13,24 +12,16 @@ fn is_reducing_number(number: i32) -> bool {
 }
 
 fn main() {
-    let mut i = 0;
+    for i in 0..=LAST_REDUCING_NUMBER {
+        if i % 1000000 == 0 {
+            eprintln!("{} / {}", i, LAST_REDUCING_NUMBER);
+        }
 
-    for _ in 0..=MAX_N {
-        loop {
-            if i % 1000000 == 0 {
-                eprintln!("{} / {}", i, LAST_REDUCING_NUMBER);
-            }
-
-            if i > LAST_REDUCING_NUMBER {
-                exit(0);
-            }
-            if is_reducing_number(i) {
-                println!("{},", i);
-
-                i += 1;
-                break;
-            }
-            i += 1;
+        if i > LAST_REDUCING_NUMBER {
+            exit(0);
+        }
+        if is_reducing_number(i) {
+            println!("{},", i);
         }
     }
 }

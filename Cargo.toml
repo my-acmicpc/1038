@@ -1,0 +1,2 @@
+[workspace]
+members = ["to_submit", "get_solution"]
